@@ -1,21 +1,33 @@
-const commonQuestions = document.querySelectorAll(".question-item");
-commonQuestions.forEach(question => {
-  question.addEventListener('click', ()=>{
-    const answer = question.querySelector(".answer-text");
+const currentYear = new Date().getFullYear();
+document.getElementById('copyrightYear').innerText = currentYear;
 
-    document.querySelectorAll('.question-item').forEach(item => {
-      if (item !== question){
-        item.classList.remove('open');
-        item.querySelector(".answer-text").style.maxHeight = null;
-      }
-    })
+function setupAccordion(containerSelector, itemSelector, contentSelector) {
+  const accordions = document.querySelectorAll(containerSelector);
+  accordions.forEach(accordion => {
+    const items = accordion.querySelectorAll(itemSelector);
+    items.forEach(item => {
+      const content = accordion.querySelector(contentSelector);
+      item.addEventListener('click', () => {
+        document.querySelectorAll(itemSelector).forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.closest(containerSelector).classList.remove('open');
+            const otherContent = otherItem.closest(containerSelector).querySelector(contentSelector);
+            if (otherContent) otherContent.style.maxHeight = null;
+          }
+        });
 
-    if (question.classList.contains('open')){
-      answer.style.maxHeight = null;
-      question.classList.remove('open');
-    } else {
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-      question.classList.add('open');
-    }
-  })
-})
+        toggleAccordion(accordion, content);
+      });
+    });
+  });
+}
+
+function toggleAccordion(header, content) {
+  const isOpen = header.classList.contains('open');
+
+  header.classList.toggle('open', !isOpen);
+  content.style.maxHeight = isOpen ? null : content.scrollHeight + 'px';
+}
+
+setupAccordion('.footer-menu', '.footer-nav-title', '.footer-nav-list');
+setupAccordion('.question-item', '.question-title', '.answer-text');
