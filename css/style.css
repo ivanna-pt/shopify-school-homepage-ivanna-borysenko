@@ -42,14 +42,15 @@ body {
     font-size: 16px;
     font-weight: 400;
     color: var(--text-primary);
-    background-color: #111111;
+}
+h1,h2,h3,h4,h5{
+    font-weight: 400;
 }
 a{
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease-in-out;
 }
-
 button{
     cursor: pointer;
 }
@@ -102,7 +103,7 @@ button{
 
 @media (min-width: 768px){
     .navbar .navbar-logo{
-display: block;
+        display: block;
     }
 }
 
@@ -165,4 +166,63 @@ display: block;
     }
 }
 
+/*Swiper Hero slider*/
+.hero{
+    height: 600px;
+    background-color: #111111;
+}
 
+@media (min-width: 768px){
+    .hero{
+        height: 750px;
+    }
+}
+
+/*Section styles*/
+.section{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.section-header{
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.section-title{
+    font-size: 1.5rem;
+}
+
+.section-subtitle{
+    color: var(--text-secondary);
+}
+
+@media (min-width: 768px){
+    .section-title{
+        font-size: 2rem;
+    }
+    .section-header{
+        margin-bottom: 48px;
+    }
+}
+
+/*Featured featured Section*/
+.product-list{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    overflow: hidden;
+}
+
+.product-list .product-item{
+    flex-shrink: 0;
+}
+
+.item-details{
+    margin-top: 16px;
+}
+
+.item-price{
+    margin-top: 8px;
+    color: var(--text-secondary);
+}
