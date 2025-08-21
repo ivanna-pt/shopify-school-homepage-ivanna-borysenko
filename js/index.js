@@ -1,6 +1,3 @@
-const currentYear = new Date().getFullYear();
-document.getElementById('copyrightYear').innerText = currentYear;
-
 function setupAccordion(containerSelector, itemSelector, contentSelector) {
   const accordions = document.querySelectorAll(containerSelector);
   accordions.forEach(accordion => {
@@ -16,18 +13,29 @@ function setupAccordion(containerSelector, itemSelector, contentSelector) {
           }
         });
 
-        toggleAccordion(accordion, content);
+        toggleAccordion(accordion, content, 'open');
       });
     });
   });
 }
 
-function toggleAccordion(header, content) {
-  const isOpen = header.classList.contains('open');
+function toggleAccordion(header, content, toggleSelector) {
+  const isOpen = header.classList.contains(toggleSelector);
 
-  header.classList.toggle('open', !isOpen);
+  header.classList.toggle(toggleSelector, !isOpen);
   content.style.maxHeight = isOpen ? null : content.scrollHeight + 'px';
 }
+
+const currentYear = new Date().getFullYear();
+document.getElementById('copyrightYear').innerText = currentYear;
+
+//toggle Mobile Navigation
+const navigation = document.querySelector('.navbar-collapse');
+const navigationBtn = document.querySelector('.navbar-toggler');
+
+navigationBtn.addEventListener('click', ()=> {
+  toggleAccordion(navigation, navigation, 'show')
+})
 
 setupAccordion('.footer-menu', '.footer-nav-title', '.footer-nav-list');
 setupAccordion('.question-item', '.question-title', '.answer-text');
