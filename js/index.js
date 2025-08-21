@@ -57,12 +57,13 @@ const titleEl = card.querySelector('.product-title');
 const priceEl = card.querySelector('.product-price');
 const descriptionEl = card.querySelector('.product-description');
 const colorsButtons = card.querySelectorAll('.color-options button');
-const sizesEl = card.querySelector('.size-options');
+const sizesButtons = card.querySelectorAll('.size-options button');
 const addToCartBtn = card.querySelector('.add-to-cart');
 
 function init (){
   titleEl.textContent = productData.title;
   descriptionEl.textContent = productData.description;
+  card.querySelector(`.color-options button[data-color="${selectedColor}"]`).classList.add('active');
   loadGallery(selectedColor);
   updatePrice(selectedColor);
 }
@@ -119,6 +120,14 @@ colorsButtons.forEach(btn => {
     card.querySelectorAll('.size-options button').forEach(b => b.classList.remove('active'));
 
     colorsButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  })
+})
+
+sizesButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    selectedSize = btn.dataset.size;
+    sizesButtons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   })
 })
