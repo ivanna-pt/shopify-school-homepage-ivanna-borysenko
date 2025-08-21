@@ -12,7 +12,6 @@ function setupAccordion(containerSelector, itemSelector, contentSelector) {
             if (otherContent) otherContent.style.maxHeight = null;
           }
         });
-
         toggleAccordion(accordion, content, 'open');
       });
     });
@@ -34,23 +33,17 @@ const productData = {
   variants: {
     white: {
       price: 280.00,
-      images: ["img/product/white-sneakers-side-view.webp", "img/product/white-sneakers-bottom-view.webp", "img/product/white-sneakers-side-view-2.webp", "img/product/white-sneakers-top-view.webp", "img/product/white-sneakers-front-view.webp"],
-      sizes: ['UK 5.5', 'UK 6(EU 39)', 'UK 6(EU 40)', 'UK 6.5', 'UK 7', 'UK 7.5']
+      images: ["img/product/white-sneakers-side-view.webp", "img/product/white-sneakers-bottom-view.webp", "img/product/white-sneakers-side-view-2.webp", "img/product/white-sneakers-top-view.webp", "img/product/white-sneakers-front-view.webp"]
     },
     black: {
       price: 320.00,
-      images: [],
-      sizes: ['UK 5.5', 'UK 6(EU 39)', 'UK 6(EU 40)', 'UK 6.5', 'UK 7', 'UK 7.5']
+      images: ["img/product/black-sneakers-1.webp","img/product/black-sneakers-2.webp","img/product/black-sneakers-3.webp","img/product/black-sneakers-4.webp","img/product/black-sneakers-5.webp",]
     },
     pink: {
       price: 260.00,
-      images: [],
-      sizes: ['UK 5.5', 'UK 6(EU 39)', 'UK 6(EU 40)', 'UK 6.5', 'UK 7', 'UK 7.5']
+      images: ["img/product/pink-sneakers-1.webp","img/product/pink-sneakers-2.webp","img/product/pink-sneakers-3.webp","img/product/pink-sneakers-4.webp","img/product/pink-sneakers-5.webp",]
     }
   }
-
-
-
 }
 
 let selectedColor = productData.defaultColor;
@@ -59,70 +52,134 @@ let mainImage = productData.variants[selectedColor].images[0];
 
 const card = document.querySelector('.product-card');
 const mainImgEl = card.querySelector('.main-image img');
-const galleryEl = card.querySelector('.product-gallery');
+const galleries = card.querySelectorAll('.product-gallery');
 const titleEl = card.querySelector('.product-title');
 const priceEl = card.querySelector('.product-price');
 const descriptionEl = card.querySelector('.product-description');
-const colorsEl = card.querySelector('.color-options');
+const colorsButtons = card.querySelectorAll('.color-options button');
 const sizesEl = card.querySelector('.size-options');
 const addToCartBtn = card.querySelector('.add-to-cart');
 
-function renderProductCard () {
-  const variant = productData.variants[selectedColor];
-  console.log(variant)
-  const {title, description, id} = productData;
-  titleEl.textContent = title;
-  priceEl.textContent = `$ ${variant.price}`;
-  descriptionEl.textContent = description;
-
-  mainImgEl.src = mainImage;
-  mainImgEl.alt = `${title} - ${selectedColor}`;
-
-  galleryEl.innerHTML = '';
-  variant.images.forEach(image => {
-    const imgEl = document.createElement('img');
-    imgEl.src = image;
-    imgEl.alt = `${title} - ${selectedColor}`;
-    imgEl.classList.add('gallery-img');
-    if (image === mainImage) imgEl.classList.add('active');
-    imgEl.addEventListener('click', () => {
-      mainImage.src = image;
-      renderProductCard();
-    })
-    galleryEl.appendChild(imgEl);
-  })
-
-  colorsEl.innerHTML = '';
-  Object.keys(productData.variants).forEach(color => {
-    const btn = document.createElement('button');
-    btn.textContent = color;
-    btn.classList.add('color-btn')
-    if (color === mainImage) btn.classList.add('active');
-    btn.addEventListener('click', () => {
-      selectedColor = color;
-      mainImage = productData.variants[color].images[0];
-      selectedSize = null;
-      renderProductCard();
-    })
-    colorsEl.appendChild(btn);
-  })
-
-  sizesEl.innerHTML = ''
-  variant.sizes.forEach(size => {
-    const btn = document.createElement('button');
-    btn.textContent = size;
-    btn.classList.add('size-btn')
-    if (size === selectedSize) btn.classList.add('active');
-    btn.addEventListener("click", () => {
-      selectedSize = size;
-      renderProductCard();
-    });
-    sizesEl.appendChild(btn);
-  })
-
-
-
+function init (){
+  titleEl.textContent = productData.title;
+  descriptionEl.textContent = productData.description;
+  loadGallery(selectedColor);
+  updatePrice(selectedColor);
 }
+
+function updatePrice (color) {
+  priceEl.textContent = `$ ${productData.variants[color].price}`
+}
+
+function loadGallery (color) {
+  const galleryEl = card.querySelector(`.product-gallery[data-color="${color}"]`)
+  console.log(galleryEl)
+
+  if(galleryEl.childElementCount === 0){
+    productData.variants[color].images.forEach((imgURL, id) => {
+      const imgEl = document.createElement('img');
+      imgEl.dataset.src = imgURL;
+      imgEl.src = imgURL;
+      if (id === 0) imgEl.classList.add("active");
+      galleryEl.appendChild(imgEl);
+    });
+
+    galleryEl.addEventListener('click', (e) =>{
+      if (e.target.tagName === 'IMG'){
+        mainImgEl.src = e.target.dataset.src;
+        galleryEl.querySelectorAll('img').forEach(image => image.classList.remove('active'));
+        e.target.classList.add('active');
+      }
+    })
+  }
+
+  const firstImg = galleryEl.querySelector("img");
+  if (firstImg) {
+    mainImgEl.src = firstImg.dataset.src;
+    mainImgEl.alt = `${productData.title} - ${color}`;
+  }
+
+  galleryEl.querySelectorAll("img").forEach(img => img.classList.remove("active"));
+  firstImg.classList.add("active");
+}
+
+colorsButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    selectedColor = btn.dataset.color;
+    console.log(selectedColor);
+
+    galleries.forEach(gallery => gallery.classList.add('hidden'));
+    const currentGallery = card.querySelector(`.product-gallery[data-color="${selectedColor}"]`);
+    currentGallery.classList.remove('hidden');
+
+    loadGallery(selectedColor);
+    updatePrice(selectedColor);
+
+    selectedSize = null;
+    card.querySelectorAll('.size-options button').forEach(b => b.classList.remove('active'));
+
+    colorsButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  })
+})
+
+
+// function renderProductCard () {
+//   const variant = productData.variants[selectedColor];
+//   console.log(variant)
+//   const {title, description, id} = productData;
+//   titleEl.textContent = title;
+//   priceEl.textContent = `$ ${variant.price}`;
+//   descriptionEl.textContent = description;
+//
+//   mainImgEl.src = mainImage;
+//   mainImgEl.alt = `${title} - ${selectedColor}`;
+//
+//   galleryEl.innerHTML = '';
+//   variant.images.forEach(image => {
+//     const imgEl = document.createElement('img');
+//     imgEl.src = image;
+//     imgEl.alt = `${title} - ${selectedColor}`;
+//     imgEl.classList.add('gallery-img');
+//     if (image === mainImage) imgEl.classList.add('active');
+//     imgEl.addEventListener('click', () => {
+//       mainImage.src = image;
+//       renderProductCard();
+//     })
+//     galleryEl.appendChild(imgEl);
+//   })
+//
+//   colorsEl.innerHTML = '';
+//   Object.keys(productData.variants).forEach(color => {
+//     const btn = document.createElement('button');
+//     btn.textContent = color;
+//     btn.classList.add('color-btn')
+//     if (color === mainImage) btn.classList.add('active');
+//     btn.addEventListener('click', () => {
+//       selectedColor = color;
+//       mainImage = productData.variants[color].images[0];
+//       selectedSize = null;
+//       renderProductCard();
+//     })
+//     colorsEl.appendChild(btn);
+//   })
+//
+//   sizesEl.innerHTML = ''
+//   variant.sizes.forEach(size => {
+//     const btn = document.createElement('button');
+//     btn.textContent = size;
+//     btn.classList.add('size-btn')
+//     if (size === selectedSize) btn.classList.add('active');
+//     btn.addEventListener("click", () => {
+//       selectedSize = size;
+//       renderProductCard();
+//     });
+//     sizesEl.appendChild(btn);
+//   })
+//
+//
+//
+// }
 
 
 
@@ -141,4 +198,5 @@ navigationBtn.addEventListener('click', ()=> {
 
 setupAccordion('.footer-menu', '.footer-nav-title', '.footer-nav-list');
 setupAccordion('.question-item', '.question-title', '.answer-text');
-renderProductCard();
+// renderProductCard();
+init();

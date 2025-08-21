@@ -131,19 +131,34 @@
 
 <!--    Product Card Section Starts-->
     <section class="section">
-      <div class="container product-card">
-      <div class="product-images">
-        <div class="main-image"><img src="" width="536" height="670" alt="">
-        </div>
-        <div class="product-gallery"></div>
-      </div>
-        <div class="product-info">
-          <h2 class="product-title"></h2>
-          <p class="product-price"></p>
-          <div class="color-options"></div>
-          <div class="size-options"></div>
-          <button class="add-to-cart">Add to Cart</button>
-          <p class="product-description"></p>
+      <div class="container">
+        <div class="product-card">
+          <div class="product-images">
+            <div class="main-image"><img src="" width="536" height="670" alt="">
+            </div>
+            <div class="product-gallery" data-color="white"></div>
+            <div class="product-gallery hidden" data-color="black"></div>
+            <div class="product-gallery hidden" data-color="pink"></div>
+          </div>
+          <div class="product-info">
+            <h2 class="product-title"></h2>
+            <p class="product-price"></p>
+            <div class="color-options">
+              <button data-color="black">black</button>
+              <button data-color="white">white</button>
+              <button data-color="pink">pink</button>
+            </div>
+            <div class="size-options">
+              <button data-size="UK 5.5">UK 5.5</button>
+              <button data-size="UK 6(EU 39)">UK 6(EU 39)</button>
+              <button data-size="UK 6 (EU 40)">UK 6 (EU 40)</button>
+              <button data-size="UK 6.5">UK 6.5</button>
+              <button data-size="UK 7">UK 7</button>
+              <button data-size="UK 7.5">UK 7.5</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+            <p class="product-description"></p>
+          </div>
         </div>
 
       </div>
