@@ -258,6 +258,7 @@ header.hidden{
 /*Swiper Hero slider*/
 .hero{
     height: 600px;
+    position: relative;
     /*background-color: #111111;*/
 }
 
@@ -301,17 +302,17 @@ header.hidden{
     background-color: rgba(17, 17, 17, 0.2);
 }
 
-.bg-slide-1{
-    background-image: url("../img/hero-slide1-1280.webp");
-}
-.bg-slide-2{
-    background-image: url("../img/hero-slide2-1280.webp");
-}
-.bg-slide-3{
-    background-image: url("../img/hero-slide3-1920.webp");
+.hero .slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.hero .slide-container{
+.hero .hero-content{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
     padding-left: 1rem;
     padding-right: 1rem;
     max-width: 640px;
@@ -319,25 +320,24 @@ header.hidden{
     z-index: 10;
 }
 
-.hero .slide-container> * + *{
+.hero .hero-content> * + *{
     margin-top: 2rem;
 }
 
-.hero .slide-content{
-
+.hero .inner-container{
     color: var(--color-white);
 }
 
-.hero .slide-content> * + *{
+.hero .inner-container> * + *{
     margin-top: 1rem;
 }
 
-.hero .slide button{
+.hero .hero-content button{
     width: 220px;
 }
 
 @media (min-width: 768px) {
-    .hero .slide-container{
+    .hero .hero-content{
         padding-left: 3.75rem;
         padding-right: 3.75rem;
         text-align: left;
