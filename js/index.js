@@ -4,22 +4,41 @@ const HeroSwiper = new Swiper('.swiper.hero-slider', {
   autoplay: {
     delay: 5000,
   },
-  // Optional parameters
   direction: 'horizontal',
   loop: true,
-
-  // If we need pagination
   pagination: {
     el: '.swiper-pagination',
-  },
+  }
+});
 
-  // Navigation arrows
+const collectionSwiper = new Swiper('.swiper.collection-slider',{
+  slidesPerView: 'auto',
+  spaceBetween: 16,
+  grid: {
+    rows: 1,
+    fill: 'row'
+  },
+  breakpoints: {
+    768: {
+      // slidesPerView: 2.5,
+      spaceBetween: 20,
+      grid: {
+        rows: 1,
+      },
+    },
+    1280: {
+      slidesPerView: 4,
+      spaceBetween: 24,
+      grid: {
+        rows: 1,
+      },
+    }
+  },
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   }
 });
-
 
 
 
