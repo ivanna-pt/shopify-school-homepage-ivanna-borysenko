@@ -296,7 +296,7 @@ const currentYear = new Date().getFullYear();
 document.getElementById('copyrightYear').innerText = currentYear;
 
 //toggle Mobile Navigation
-const navigation = document.querySelector('.navbar-collapse');
+const navigation = document.querySelector('.navbar-nav');
 const navigationBtn = document.querySelector('.navbar-toggler');
 
 navigationBtn.addEventListener('click', ()=> {
