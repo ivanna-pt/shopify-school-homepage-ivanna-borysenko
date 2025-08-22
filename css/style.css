@@ -43,7 +43,7 @@ body {
     font-weight: 400;
     color: var(--text-primary);
 }
-h1,h2,h3,h4,h5{
+h2,h3,h4,h5{
     font-weight: 400;
 }
 a{
@@ -81,12 +81,23 @@ button{
 
 /*Utility classes*/
 h1, .h1{
-    font-size: 2.75rem;
-    line-height: 1;
+    font-size: 1.9rem;
+    line-height: 1.2;
 }
 h2, .h2{
-    font-size: 2rem;
-    line-height: 1.2;
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+@media (min-width: 768px){
+    h1, .h1{
+        font-size: 3rem;
+        line-height: 1;
+    }
+    h2, .h2{
+        font-size: 1.75rem;
+        line-height: 1.2;
+    }
+
 }
 .text-large{
     font-size: 1rem;
@@ -103,10 +114,21 @@ h2, .h2{
     height: 56px;
     border-radius: 0.5rem;
     border: none;
+    transition: all .3s ease;
 }
 .btn-black{
     background-color: var(--text-primary);
     color: var(--color-white);
+}
+.btn-black:hover{
+    background-color: var(--text-secondary);
+}
+.btn-white{
+    background-color: var(--color-white);
+    color: var(--text-primary);
+}
+.btn-white:hover{
+    background-color: #CACACB;
 }
 
 
@@ -233,12 +255,89 @@ header.hidden{
 /*Swiper Hero slider*/
 .hero{
     height: 600px;
-    background-color: #111111;
+    /*background-color: #111111;*/
 }
 
 @media (min-width: 768px){
     .hero{
         height: 750px;
+    }
+}
+
+.hero .swiper {
+    width: 100%;
+    height: 100%;
+}
+.hero-slider{
+    --swiper-pagination-color: #fff;
+    --swiper-pagination-bullet-width: 20px;
+    --swiper-pagination-bullet-height: 6px;
+    --swiper-pagination-bullet-inactive-color: #fff;
+}
+
+.hero-slider .swiper-pagination-bullet{
+    border-radius: 0.25rem;
+}
+
+.hero .slide{
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero .slide::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(17, 17, 17, 0.2);
+}
+
+.bg-slide-1{
+    background-image: url("../img/hero-slide1-1280.webp");
+}
+.bg-slide-2{
+    background-image: url("../img/hero-slide2-1280.webp");
+}
+.bg-slide-3{
+    background-image: url("../img/hero-slide3-1920.webp");
+}
+
+.hero .slide-container{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 640px;
+    text-align: center;
+    z-index: 10;
+}
+
+.hero .slide-container> * + *{
+    margin-top: 2rem;
+}
+
+.hero .slide-content{
+
+    color: var(--color-white);
+}
+
+.hero .slide-content> * + *{
+    margin-top: 1rem;
+}
+
+.hero .slide button{
+    width: 220px;
+}
+
+@media (min-width: 768px) {
+    .hero .slide-container{
+        padding-left: 3.75rem;
+        padding-right: 3.75rem;
+        text-align: left;
     }
 }
 
@@ -267,9 +366,6 @@ header.hidden{
 
 
 @media (min-width: 768px){
-    .section-title{
-        font-size: 2rem;
-    }
     .section-header{
         margin-bottom: 3rem;
     }

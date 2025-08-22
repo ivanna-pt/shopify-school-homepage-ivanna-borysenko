@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -28,7 +32,44 @@
     </nav>
   </header>
   <section class="hero">
-
+    <!-- Slider main container -->
+    <div class="hero-slider swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <div class="slide bg-slide-1">
+            <div class="slide-container">
+              <div class="slide-content">
+                <h1>More than just shoes — it’s a part of your story.</h1>
+                <p>Original sneakers from Nike and other top brands that make every step feel special.</p>
+              </div>
+              <button class="btn btn-white shop-collection">Shop the Collection</button>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide"><div class="slide bg-slide-2">
+          <div class="slide-container">
+            <div class="slide-content">
+              <h1>More than just shoes — it’s a part of your story.</h1>
+              <p>Original sneakers from Nike and other top brands that make every step feel special.</p>
+            </div>
+            <button class="btn btn-white shop-collection">Shop the Collection</button>
+          </div>
+        </div></div>
+        <div class="swiper-slide"><div class="slide bg-slide-3">
+          <div class="slide-container">
+            <div class="slide-content">
+              <h1>More than just shoes — it’s a part of your story.</h1>
+              <p>Original sneakers from Nike and other top brands that make every step feel special.</p>
+            </div>
+            <button class="btn btn-white shop-collection">Shop the Collection</button>
+          </div>
+        </div></div>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
   </section>
   <main>
     <!--    Featured Collection Section Starts-->
@@ -243,6 +284,7 @@
     </div>
   </footer>
 
-<script src="js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

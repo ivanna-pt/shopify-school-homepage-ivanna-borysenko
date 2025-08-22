@@ -1,3 +1,28 @@
+const HeroSwiper = new Swiper('.swiper.hero-slider', {
+  speed: 400,
+  spaceBetween: 100,
+  autoplay: {
+    delay: 5000,
+  },
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  }
+});
+
+
+
+
 function setupAccordion(containerSelector, itemSelector, contentSelector) {
   const accordions = document.querySelectorAll(containerSelector);
   accordions.forEach(accordion => {
