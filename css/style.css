@@ -71,11 +71,11 @@ button{
     /*padding: 0;*/
 }
 
-@media (min-width: 1280px){
+@media (min-width: 1024px){
     .container{
         max-width: 1320px;
-        /*padding-left: 0;*/
-        /*padding-right: 0;*/
+        padding-left: 3.75rem;
+        padding-right: 3.75rem;
     }
 }
 
@@ -372,6 +372,63 @@ header.hidden{
 }
 
 /*Featured featured Section*/
+
+.featured-collection .item-details{
+    margin-top: 1rem;
+}
+.featured-collection .item-details>*+*{
+    margin-top: 0.5rem;
+}
+
+.featured-collection .item-thumb img{
+    border-radius: 0.5rem;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+.featured-collection .slider-container{
+    position: relative;
+}
+.swiper.collection-slider{
+    /*position: relative;*/
+}
+.featured-collection .swiper-button-next-custom,
+.featured-collection .swiper-button-prev-custom{
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    position: absolute;
+    /*top: 40%;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all .3s ease;
+}
+.featured-collection .swiper-button-next-custom:hover,
+.featured-collection .swiper-button-prev-custom:hover{
+    border-color: #111111;
+}
+.featured-collection .swiper-button-next-custom{
+    right: -20px;
+    top: 50%;
+    transform: translateY(-100%);
+}
+.featured-collection .swiper-button-prev-custom{
+    left: -20px;
+    top: 50%;
+    transform: translateY(-100%);
+}
+.featured-collection .swiper-button-prev-custom img{
+    transform: scaleX(-1);
+}
+.featured-collection .swiper-button-prev-custom.swiper-button-disabled,
+.featured-collection .swiper-button-next-custom.swiper-button-disabled {
+    display: none;
+}
+
 @media (max-width: 1024px){
     .swiper.collection-slider .swiper-slide{
         width: auto;
@@ -384,24 +441,12 @@ header.hidden{
 }
 
 @media (max-width: 768px){
-    .swiper.collection-slider .swiper-button-next,
-    .swiper.collection-slider .swiper-button-prev {
+    .featured-collection .swiper-button-next-custom,
+    .featured-collection .swiper-button-prev-custom {
         display: none;
     }
 }
 
-.featured-collection .item-details{
-    margin-top: 1rem;
-}
-.featured-collection .item-details>*+*{
-    margin-top: 0.5rem;
-}
-
-.featured-collection .item-thumb img{
-    border-radius: 0.5rem;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-}
 
 
 /*Product card Section*/

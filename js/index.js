@@ -35,8 +35,8 @@ const collectionSwiper = new Swiper('.swiper.collection-slider',{
     }
   },
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next-custom',
+    prevEl: '.swiper-button-prev-custom',
   }
 });
 
