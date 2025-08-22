@@ -205,7 +205,21 @@ sizesButtons.forEach(btn => {
 //
 // }
 
+let prevScroll = 0;
+const header = document.querySelector('header');
 
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+  if (currentScroll <= 0){
+    header.classList.remove('hidden');
+  } else if(currentScroll > prevScroll){
+    header.classList.add('hidden');
+  } else {
+    header.classList.remove('hidden');
+  }
+
+  prevScroll=currentScroll;
+})
 
 
 const currentYear = new Date().getFullYear();

@@ -116,11 +116,17 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    background-color: var(--color-white);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+header.hidden{
+    transform: translateY(-100%);
 }
 .navbar{
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: var(--color-white);
+
 }
 
 @media (min-width: 768px){
