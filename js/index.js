@@ -1,3 +1,23 @@
+document.addEventListener('DOMContentLoaded', () =>{
+  const modal = document.querySelector('.modal');
+  const closeBtn = modal.querySelector('.modal-close');
+  const form = modal.querySelector('.modal-form');
+
+  setTimeout(()=>{
+    modal.style.display = 'flex';
+  }, 1000)
+
+  closeBtn.addEventListener('click', ()=>{
+    modal.style.display = 'none';
+  })
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    modal.style.display = 'none';
+    form.reset();
+  })
+})
+
 const HeroSwiper = new Swiper('.swiper.hero-slider', {
   speed: 400,
   spaceBetween: 100,
