@@ -56,7 +56,7 @@ const galleries = card.querySelectorAll('.product-gallery');
 const titleEl = card.querySelector('.product-title');
 const priceEl = card.querySelector('.product-price');
 const descriptionEl = card.querySelector('.product-description');
-const colorsButtons = card.querySelectorAll('.color-options button');
+const colorsButtons = card.querySelectorAll('.color-button');
 const sizesButtons = card.querySelectorAll('.size-options button');
 const addToCartBtn = card.querySelector('.add-to-cart');
 
@@ -65,11 +65,23 @@ function init (){
   descriptionEl.textContent = productData.description;
   card.querySelector(`.color-options button[data-color="${selectedColor}"]`).classList.add('active');
   loadGallery(selectedColor);
+  renderColorOptionsImgs();
   updatePrice(selectedColor);
 }
 
 function updatePrice (color) {
   priceEl.textContent = `$ ${productData.variants[color].price}`
+}
+
+function renderColorOptionsImgs () {
+  colorsButtons.forEach(btn => {
+    const imgEl = document.createElement('img');
+    const color = btn.ariaLabel;
+    const imgUrl = productData.variants[color].images[0]
+    imgEl.src = imgUrl;
+    imgEl.alt = color + " color option";
+    btn.appendChild(imgEl);
+  })
 }
 
 function loadGallery (color) {
@@ -78,18 +90,21 @@ function loadGallery (color) {
 
   if(galleryEl.childElementCount === 0){
     productData.variants[color].images.forEach((imgURL, id) => {
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('image-container');
       const imgEl = document.createElement('img');
       imgEl.dataset.src = imgURL;
       imgEl.src = imgURL;
-      if (id === 0) imgEl.classList.add("active");
-      galleryEl.appendChild(imgEl);
+      if (id === 0) imgContainer.classList.add("active");
+      imgContainer.appendChild(imgEl);
+      galleryEl.appendChild(imgContainer);
     });
 
     galleryEl.addEventListener('click', (e) =>{
       if (e.target.tagName === 'IMG'){
         mainImgEl.src = e.target.dataset.src;
-        galleryEl.querySelectorAll('img').forEach(image => image.classList.remove('active'));
-        e.target.classList.add('active');
+        galleryEl.querySelectorAll('.image-container').forEach(image => image.classList.remove('active'));
+        e.target.closest('.image-container').classList.add('active');
       }
     })
   }

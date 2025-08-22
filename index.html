@@ -12,9 +12,9 @@
     <nav class="navbar">
       <div class="container">
         <a href="#" class="navbar-logo"><img src="img/Logo.svg" width="100" height="24" alt="Stellar Soft"></a>
-        <button class="navbar-toggler"><img src="img/navbar-toggler.svg" width="24" height="24" alt=""></button>
+        <button class="navbar-toggler"><img src="img/icons/navbar-toggler.svg" width="24" height="24" alt=""></button>
         <a href="#" class="shopping-cart">
-          <img src="img/cart-icon.svg" width="24" height="24" alt="Open a shopping cart">
+          <img src="img/icons/cart-icon.svg" width="24" height="24" alt="Open a shopping cart">
         </a>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav">
@@ -43,8 +43,8 @@
               <img src="img/featured/nike-streakfly-2.webp" width="312" height="312" alt="Nike Streakfly 2 Sneakers">
             </div>
             <div class="item-details">
-              <h5 class="item-name">Nike Streakfly 2</h5>
-              <p class="item-price">$300.00</p>
+              <h5 class="text-large">Nike Streakfly 2</h5>
+              <p class="text-secondary">$300.00</p>
             </div>
           </div>
           <div class="product-item">
@@ -52,8 +52,8 @@
               <img src="img/featured/nike-pegasus-premium.webp" width="312" height="312" alt="Nike Pegasus Premium Sneakers">
             </div>
             <div class="item-details">
-              <h5 class="item-name">Nike Pegasus Premium</h5>
-              <p class="item-price">$350.00</p>
+              <h5 class="text-large">Nike Pegasus Premium</h5>
+              <p class="text-secondary">$350.00</p>
             </div>
           </div>
           <div class="product-item">
@@ -61,8 +61,8 @@
               <img src="img/featured/nike-pegasus-41.webp" width="312" height="312" alt="Nike Pegasus 41 Sneakers">
             </div>
             <div class="item-details">
-              <h5 class="item-name">Nike Pegasus 41</h5>
-              <p class="item-price">$280.00</p>
+              <h5 class="text-large">Nike Pegasus 41</h5>
+              <p class="text-secondary">$280.00</p>
             </div>
           </div>
           <div class="product-item">
@@ -70,8 +70,8 @@
               <img src="img/featured/nike-revolution-7.webp" width="312" height="312" alt="Nike Revolution 7 Sneakers">
             </div>
             <div class="item-details">
-              <h5 class="item-name">Nike Revolution 7</h5>
-              <p class="item-price">$440.00</p>
+              <h5 class="text-large">Nike Revolution 7</h5>
+              <p class="text-secondary">$440.00</p>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
       <div class="container small">
         <div class="section-header">
           <h2 class="section-title">Frequently asked questions</h2>
-          <p class="section-subtitle">Answers to our most frequently asked questions are just one click away.</p>
+          <p class="text-secondary">Answers to our most frequently asked questions are just one click away.</p>
         </div>
         <ul class="question-list">
           <li class="question-item">
@@ -92,7 +92,7 @@
               <span class="question-text">What are Nike's delivery options?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text">
+            <div class="answer-text text-secondary">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, corporis ea enim esse ipsum magni maxime molestias neque perspiciatis reiciendis?</p>
             </div>
           </li>
@@ -101,7 +101,7 @@
               <span class="question-text">What is Nike's returns policy?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text">
+            <div class="answer-text text-secondary">
               <p>When you shop Nike online, either in the Nike App or on Nike.com, you can return items that are unworn and unwashed and still have their product tags attached within 30 days of purchase (some exceptions apply). That includes custom Nike By You sneakers.</p>
             </div>
           </li>
@@ -110,7 +110,7 @@
               <span class="question-text">Where is my Nike order?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text">
+            <div class="answer-text text-secondary">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, corporis ea enim esse ipsum magni maxime molestias neque perspiciatis reiciendis?</p>
             </div>
           </li>
@@ -119,7 +119,7 @@
               <span class="question-text">How do I find the right size and fit?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text">
+            <div class="answer-text text-secondary">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, corporis ea enim esse ipsum magni maxime molestias neque perspiciatis reiciendis?</p>
             </div>
           </li>
@@ -134,30 +134,42 @@
       <div class="container">
         <div class="product-card">
           <div class="product-images">
-            <div class="main-image"><img src="" width="536" height="670" alt="">
+            <div class="main-image">
+              <div class="badge">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 13.0721L7.11574 14.6666L7.66671 11.2895L5.33337 8.89805L8.55789 8.40571L10 5.33325L11.4422 8.40571L14.6667 8.89805L12.3334 11.2895L12.8843 14.6666L10 13.0721Z" fill="#111111" stroke="#111111" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="badge-text">highly rated</span>
+              </div>
+              <img src="" width="536" height="670" alt="">
             </div>
             <div class="product-gallery" data-color="white"></div>
             <div class="product-gallery hidden" data-color="black"></div>
             <div class="product-gallery hidden" data-color="pink"></div>
           </div>
           <div class="product-info">
-            <h2 class="product-title"></h2>
-            <p class="product-price"></p>
+            <div>
+              <h2 class="product-title"></h2>
+              <p class="product-price text-secondary text-medium"></p>
+            </div>
             <div class="color-options">
-              <button data-color="black">black</button>
-              <button data-color="white">white</button>
-              <button data-color="pink">pink</button>
+              <button class="color-button" data-color="black" aria-label="black"></button>
+              <button class="color-button" data-color="white" aria-label="white"></button>
+              <button class="color-button" data-color="pink" aria-label="pink"></button>
             </div>
             <div class="size-options">
-              <button data-size="UK 5.5">UK 5.5</button>
-              <button data-size="UK 6(EU 39)">UK 6(EU 39)</button>
-              <button data-size="UK 6 (EU 40)">UK 6 (EU 40)</button>
-              <button data-size="UK 6.5">UK 6.5</button>
-              <button data-size="UK 7">UK 7</button>
-              <button data-size="UK 7.5">UK 7.5</button>
+              <p>Select size:</p>
+              <div class="grid">
+                <button class="size-button" data-size="UK 5.5">UK 5.5</button>
+                <button class="size-button" data-size="UK 6(EU 39)">UK 6(EU 39)</button>
+                <button class="size-button" data-size="UK 6 (EU 40)">UK 6 (EU 40)</button>
+                <button class="size-button" data-size="UK 6.5">UK 6.5</button>
+                <button class="size-button" data-size="UK 7">UK 7</button>
+                <button class="size-button" data-size="UK 7.5">UK 7.5</button>
+              </div>
             </div>
-            <button class="add-to-cart">Add to Cart</button>
-            <p class="product-description"></p>
+            <button class="btn btn-black add-to-cart">Add to Cart</button>
+            <p class="product-description text-secondary text-medium"></p>
           </div>
         </div>
 
@@ -171,7 +183,7 @@
         <div class="footer-menu">
           <button type="button" class="footer-nav-title">
             <span class="title">Resources</span>
-            <img src="img/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
           </button>
           <ul class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">Find a Store</a></li>
@@ -184,7 +196,7 @@
         <div class="footer-menu">
           <button type="button" class="footer-nav-title">
             <span class="title">Help</span>
-            <img src="img/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
           </button>
           <ul class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">Get Help</a></li>
@@ -197,7 +209,7 @@
         <div class="footer-menu">
           <button type="button" class="footer-nav-title">
             <span class="title">Company</span>
-            <img src="img/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
           </button>
           <ul class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">About Nike</a></li>
@@ -210,7 +222,7 @@
         <div class="footer-menu">
           <button type="button" class="footer-nav-title">
             <span class="title">Menu</span>
-            <img src="img/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
           </button>
           <ul class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">New & Featured</a></li>
