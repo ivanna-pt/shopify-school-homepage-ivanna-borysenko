@@ -248,6 +248,13 @@ sizesButtons.forEach(btn => {
 //
 //
 // }
+const contactForm = document.querySelector('.contact-form');
+
+contactForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  alert('Thank You!');
+  contactForm.reset();
+})
 
 let prevScroll = 0;
 const header = document.querySelector('header');
@@ -264,7 +271,6 @@ window.addEventListener('scroll', () => {
 
   prevScroll=currentScroll;
 })
-
 
 const currentYear = new Date().getFullYear();
 document.getElementById('copyrightYear').innerText = currentYear;
