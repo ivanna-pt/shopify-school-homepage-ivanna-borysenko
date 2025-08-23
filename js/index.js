@@ -62,32 +62,7 @@ const collectionSwiper = new Swiper('.swiper.collection-slider',{
 
 
 
-function setupAccordion(containerSelector, itemSelector, contentSelector) {
-  const accordions = document.querySelectorAll(containerSelector);
-  accordions.forEach(accordion => {
-    const items = accordion.querySelectorAll(itemSelector);
-    items.forEach(item => {
-      const content = accordion.querySelector(contentSelector);
-      item.addEventListener('click', () => {
-        document.querySelectorAll(itemSelector).forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.closest(containerSelector).classList.remove('open');
-            const otherContent = otherItem.closest(containerSelector).querySelector(contentSelector);
-            if (otherContent) otherContent.style.maxHeight = null;
-          }
-        });
-        toggleAccordion(accordion, content, 'open');
-      });
-    });
-  });
-}
 
-function toggleAccordion(header, content, toggleSelector) {
-  const isOpen = header.classList.contains(toggleSelector);
-
-  header.classList.toggle(toggleSelector, !isOpen);
-  content.style.maxHeight = isOpen ? null : content.scrollHeight + 'px';
-}
 
 const productData = {
   id: "product1",
@@ -295,16 +270,59 @@ window.addEventListener('scroll', () => {
 const currentYear = new Date().getFullYear();
 document.getElementById('copyrightYear').innerText = currentYear;
 
-//toggle Mobile Navigation
-const navigation = document.querySelector('.navbar-nav');
-const navigationBtn = document.querySelector('.navbar-toggler');
 
-navigationBtn.addEventListener('click', ()=> {
-  toggleAccordion(navigation, navigation, 'show')
+function toggleItem(item, triggerSelector, contentSelector, toggleClass = 'open') {
+  const trigger = item.querySelector(triggerSelector);
+  const content = item.querySelector(contentSelector);
+  const isOpen = item.classList.contains(toggleClass);
+
+  item.classList.toggle(toggleClass, !isOpen);
+
+  if (trigger) {
+    trigger.setAttribute('aria-expanded', String(!isOpen));
+  } else {
+    item.setAttribute('aria-expanded', String(!isOpen));
+  }
+  if (content) {
+    content.setAttribute('aria-hidden', String(isOpen));
+    content.style.maxHeight = isOpen ? null : content.scrollHeight + 'px';
+  }
+}
+
+//toggle Mobile Navigation
+
+const navigation = document.querySelector('header .nav');
+toggleItem(navigation, '.nav-toggler', '.nav-list', 'show');
+
+document.querySelectorAll('.question-item').forEach(item => {
+  const trigger = item.querySelector('.question-title');
+
+  trigger.addEventListener('click', ()=>{
+    document.querySelectorAll('.question-item').forEach(other => {
+      if (other !== item) {
+        const otherTrigger = other.querySelector('.question-title');
+        const otherContent = other.querySelector('.answer-text');
+        other.classList.remove('open');
+        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        if (otherContent) {
+          otherContent.setAttribute('aria-hidden', 'true');
+          otherContent.style.maxHeight = null;
+        }
+      }
+    });
+
+    toggleItem(item, '.question-title', '.answer-text');
+  })
 })
 
+document.querySelectorAll('.footer-menu').forEach(menu => {
+  const trigger = menu.querySelector('.footer-nav-title');
 
-setupAccordion('.footer-menu', '.footer-nav-title', '.footer-nav-list');
-setupAccordion('.question-item', '.question-title', '.answer-text');
+  trigger.addEventListener('click', ()=>{
+    toggleItem(menu, '.footer-nav-title', '.footer-nav-list');
+  })
+
+})
+
 // renderProductCard();
 init();
