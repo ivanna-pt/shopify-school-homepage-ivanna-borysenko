@@ -152,14 +152,6 @@ header.hidden{
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
-
-@media (min-width: 768px){
-    .nav{
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
-}
-
 .nav>.container{
     position: relative;
     display: flex;
@@ -172,21 +164,9 @@ header.hidden{
     display: none;
 }
 
-@media (min-width: 768px){
-    .nav .nav-logo{
-        display: block;
-    }
-}
-
 .nav-toggler{
     background-color: transparent;
     border: 1px solid transparent;
-}
-
-@media (min-width: 768px){
-    .nav .nav-toggler{
-        display: none;
-    }
 }
 
 .nav .nav-list{
@@ -208,20 +188,6 @@ header.hidden{
     overflow: visible;
 }
 
-@media (min-width: 768px){
-    .nav .nav-list{
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        max-height: max-content;
-        opacity: 1;
-        overflow: visible;
-        margin-top: 0;
-        flex-direction: row;
-        align-items: center;
-        gap: 2rem;
-    }
-}
 
 .nav .nav-list .nav-link{
     position: relative;
@@ -241,6 +207,30 @@ header.hidden{
 .nav .nav-list .nav-link.active:before, .nav .nav-list .nav-link:hover:before{
     width: 100%;
 }
+@media (min-width: 768px){
+    .nav{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .nav .nav-logo{
+        display: block;
+    }
+    .nav .nav-toggler{
+        display: none;
+    }
+    .nav .nav-list{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        max-height: max-content;
+        opacity: 1;
+        overflow: visible;
+        margin-top: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+    }
+}
 
 
 
@@ -248,13 +238,6 @@ header.hidden{
 .hero{
     height: 600px;
     position: relative;
-    /*background-color: #111111;*/
-}
-
-@media (min-width: 768px){
-    .hero{
-        height: 750px;
-    }
 }
 
 .hero .swiper {
@@ -326,6 +309,9 @@ header.hidden{
 }
 
 @media (min-width: 768px) {
+    .hero{
+        height: 750px;
+    }
     .hero .hero-content{
         padding-left: 3.75rem;
         padding-right: 3.75rem;
@@ -354,8 +340,6 @@ header.hidden{
 .section-title{
     margin-bottom: 1rem;
 }
-
-
 
 @media (min-width: 768px){
     .section-header{
@@ -519,8 +503,6 @@ header.hidden{
     justify-content: space-between;
     gap: 1.5rem;
 }
-
-
 
 .product-info .product-price{
     margin-top: 0.75rem;
@@ -694,7 +676,6 @@ header.hidden{
     .contact-form .grid-container{
         grid-template-columns: 1fr 1fr;
     }
-
 }
 
 /*Footer */
@@ -784,7 +765,6 @@ footer{
         max-height: none;
         height: auto;
     }
-
     .footer-copyright, .policies-list{
         flex-direction: row;
         gap: 2rem;
