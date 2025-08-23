@@ -13,14 +13,14 @@
 </head>
 <body>
   <header>
-    <nav class="navbar">
+    <nav class="nav" aria-label="Main navigation">
       <div class="container">
-        <a href="#" class="navbar-logo"><img src="img/Logo.svg" width="100" height="24" alt="Stellar Soft"></a>
-        <button class="navbar-toggler" aria-label="Toggle navigation menu"><img src="img/icons/navbar-toggler.svg" width="24" height="24"></button>
-        <a href="#" class="shopping-cart">
-          <img src="img/icons/cart-icon.svg" width="24" height="24" alt="Open a shopping cart">
+        <a href="#" class="nav-logo"><img src="img/Logo.svg" width="100" height="24" alt="Stellar Soft"></a>
+        <button class="nav-toggler" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu"><img src="img/icons/navbar-toggler.svg" width="24" height="24" alt="" aria-hidden="true"></button>
+        <a href="#" class="nav-cart" aria-label="Open a shopping cart">
+          <img src="img/icons/cart-icon.svg" width="24" height="24" alt="" aria-hidden="true">
         </a>
-          <ul class="navbar-nav">
+          <ul class="nav-list">
             <li class="nav-item"><a href="#" class="nav-link">New & Featured</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Men</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Women</a></li>
@@ -31,15 +31,14 @@
   </header>
   <section class="hero">
     <div class="hero-content">
-      <div class="inner-container">
-        <h1 class="uppercase">More than just shoes — it’s a part of your story.</h1>
+      <div class="hero-text">
+        <h1>More than just shoes — it’s a part of your story.</h1>
         <p>Original sneakers from Nike and other top brands that make every step feel special.</p>
       </div>
-      <button class="btn btn-white shop-collection">Shop the Collection</button>
+      <button class="btn btn-light hero-act">Shop the Collection</button>
     </div>
     <!-- Slider main container -->
-    <div class="hero-slider swiper">
-      <!-- Additional required wrapper -->
+    <div class="hero-slider swiper" aria-label="Hero image slider">
       <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
@@ -58,7 +57,6 @@
         </div>
         </div>
       </div>
-      <!-- If we need pagination -->
       <div class="swiper-pagination"></div>
     </div>
   </section>
@@ -79,7 +77,7 @@
                          alt="Nike Streakfly 2 Sneakers">
                   </div>
                   <div class="item-details">
-                    <h5 class="text-large">Nike Streakfly 2</h5>
+                    <h3 class="text-large">Nike Streakfly 2</h3>
                     <p class="text-secondary">$300.00</p>
                   </div>
                 </div>
@@ -91,7 +89,7 @@
                          alt="Nike Pegasus Premium Sneakers">
                   </div>
                   <div class="item-details">
-                    <h5 class="text-large">Nike Pegasus Premium</h5>
+                    <h3 class="text-large">Nike Pegasus Premium</h3>
                     <p class="text-secondary">$350.00</p>
                   </div>
                 </div>
@@ -103,7 +101,7 @@
                          alt="Nike Pegasus 41 Sneakers">
                   </div>
                   <div class="item-details">
-                    <h5 class="text-large">Nike Pegasus 41</h5>
+                    <h3 class="text-large">Nike Pegasus 41</h3>
                     <p class="text-secondary">$280.00</p>
                   </div>
                 </div>
@@ -115,7 +113,7 @@
                          alt="Nike Revolution 7 Sneakers">
                   </div>
                   <div class="item-details">
-                    <h5 class="text-large">Nike Revolution 7</h5>
+                    <h3 class="text-large">Nike Revolution 7</h3>
                     <p class="text-secondary">$440.00</p>
                   </div>
                 </div>
@@ -127,17 +125,15 @@
                          alt="Nike Pegasus 41 Sneakers">
                   </div>
                   <div class="item-details">
-                    <h5 class="text-large">Nike Pegasus 41</h5>
+                    <h3 class="text-large">Nike Pegasus 41</h3>
                     <p class="text-secondary">$280.00</p>
                   </div>
                 </div>
               </div>
             </div>
-            <!--          <div class="swiper-button-prev"></div>-->
-            <!--          <div class="swiper-button-next"></div>-->
           </div>
-          <div class="swiper-button-prev-custom"><img src="img/icons/Arrow.svg" width="16" height="16" alt=""></div>
-          <div class="swiper-button-next-custom"><img src="img/icons/Arrow.svg" width="16" height="16" alt=""></div>
+          <div class="swiper-button-prev-custom" role="button" aria-label="Next Slide"><img src="img/icons/Arrow.svg" width="16" height="16" alt="" aria-hidden="true"></div>
+          <div class="swiper-button-next-custom" role="button" aria-label="Prev Slide"><img src="img/icons/Arrow.svg" width="16" height="16" alt="" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -152,38 +148,38 @@
         </div>
         <ul class="question-list">
           <li class="question-item">
-            <button type="button" class="question-title">
+            <button type="button" class="question-title" aria-expanded="false" aria-controls="faq1">
               <span class="question-text">What are Nike's delivery options?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text text-secondary">
+            <div id="faq1" class="answer-text text-secondary" aria-hidden="true">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, corporis ea enim esse ipsum magni maxime molestias neque perspiciatis reiciendis?</p>
             </div>
           </li>
           <li class="question-item">
-            <button type="button" class="question-title">
+            <button type="button" class="question-title" aria-expanded="false" aria-controls="faq2">
               <span class="question-text">What is Nike's returns policy?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text text-secondary">
+            <div id="faq2" class="answer-text text-secondary" aria-hidden="true">
               <p>When you shop Nike online, either in the Nike App or on Nike.com, you can return items that are unworn and unwashed and still have their product tags attached within 30 days of purchase (some exceptions apply). That includes custom Nike By You sneakers.</p>
             </div>
           </li>
           <li class="question-item">
-            <button type="button" class="question-title">
+            <button type="button" class="question-title" aria-expanded="false" aria-controls="faq3">
               <span class="question-text">Where is my Nike order?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text text-secondary">
+            <div id="faq3" class="answer-text text-secondary" aria-hidden="true">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, corporis ea enim esse ipsum magni maxime molestias neque perspiciatis reiciendis?</p>
             </div>
           </li>
           <li class="question-item">
-            <button type="button" class="question-title">
+            <button type="button" class="question-title" aria-expanded="false" aria-controls="faq4">
               <span class="question-text">How do I find the right size and fit?</span>
               <span class="icon"></span>
             </button>
-            <div class="answer-text text-secondary">
+            <div id="faq4" class="answer-text text-secondary" aria-hidden="true">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, corporis ea enim esse ipsum magni maxime molestias neque perspiciatis reiciendis?</p>
             </div>
           </li>
@@ -277,11 +273,13 @@
     <div class="container">
       <div class="footer-nav">
         <div class="footer-menu">
-          <button type="button" class="footer-nav-title">
+          <button type="button" class="footer-nav-title"
+                  aria-expanded="true"
+                  aria-controls="footer-menu-resources">
             <span class="title">Resources</span>
-            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon" aria-hidden="true">
           </button>
-          <ul class="footer-nav-list">
+          <ul id="footer-menu-resources" class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">Find a Store</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">Nike Journal</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">Become a Member</a></li>
@@ -290,11 +288,13 @@
           </ul>
         </div>
         <div class="footer-menu">
-          <button type="button" class="footer-nav-title">
+          <button type="button" class="footer-nav-title"
+                  aria-expanded="true"
+                  aria-controls="footer-menu-help">
             <span class="title">Help</span>
-            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon" aria-hidden="true">
           </button>
-          <ul class="footer-nav-list">
+          <ul id="footer-menu-help" class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">Get Help</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">Order Status</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">Shipping and Delivery</a></li>
@@ -303,11 +303,13 @@
           </ul>
         </div>
         <div class="footer-menu">
-          <button type="button" class="footer-nav-title">
+          <button type="button" class="footer-nav-title"
+                  aria-expanded="true"
+                  aria-controls="footer-menu-about-nike">
             <span class="title">Company</span>
-            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon" aria-hidden="true">
           </button>
-          <ul class="footer-nav-list">
+          <ul id="footer-menu-about-nike" class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">About Nike</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">News</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">Careers</a></li>
@@ -316,11 +318,13 @@
           </ul>
         </div>
         <div class="footer-menu">
-          <button type="button" class="footer-nav-title">
+          <button type="button" class="footer-nav-title"
+                  aria-expanded="true"
+                  aria-controls="footer-menu-menu">
             <span class="title">Menu</span>
-            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon">
+            <img src="img/icons/down-small.svg" alt="" width="9" height="5" class="icon" aria-hidden="true">
           </button>
-          <ul class="footer-nav-list">
+          <ul id="footer-menu-menu" class="footer-nav-list">
             <li class="footer-nav-item"><a href="#" class="footer-link">New & Featured</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">Men</a></li>
             <li class="footer-nav-item"><a href="#" class="footer-link">Women</a></li>
@@ -339,13 +343,13 @@
     </div>
   </footer>
 
-  <div class="modal" id="emailModal">
+  <div class="modal" id="emailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
       <div class="modal-container">
-        <button class="modal-close" aria-label="Toggle navigation menu"><img src="img/icons/close.svg" width="16" height="16"></button>
+        <button class="modal-close-btn" aria-label="Close modal"><img src="img/icons/close.svg" width="16" height="16" aria-hidden="true"></button>
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="h1 uppercase">Here’s $10 Off Your First Order!</h2>
-            <p>Join our newsletter and get a $10 discount code sent straight to your inbox. New customers only.</p>
+            <h2 class="h1" id="modalTitle">Here’s $10 Off Your First Order!</h2>
+            <p id="modalDesc">Join our newsletter and get a $10 discount code sent straight to your inbox. New customers only.</p>
           </div>
           <form class="modal-form">
             <div class="form-group">
