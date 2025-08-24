@@ -1,3 +1,18 @@
+let prevScroll = 0;
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+  if (currentScroll <= 0){
+    header.classList.remove('hidden');
+  } else if(currentScroll > prevScroll){
+    header.classList.add('hidden');
+  } else {
+    header.classList.remove('hidden');
+  }
+  prevScroll=currentScroll;
+})
+
 document.addEventListener('DOMContentLoaded', () =>{
   const modal = document.querySelector('.modal');
   const closeBtn = modal.querySelector('.modal-close-btn');
@@ -60,15 +75,11 @@ const collectionSwiper = new Swiper('.swiper.collection-slider',{
   }
 });
 
-
-
-
-
 const productData = {
   id: "product1",
   title: "Nike Air Max Plus",
   description: "Let your attitude have the edge in your Nike Air Max Plus, a Tuned Air experience that offers premium stability and unbelievable cushioning. ",
-  defaultColor: "white",
+  defaultColor: "pink",
   variants: {
     white: {
       price: 280.00,
@@ -87,17 +98,14 @@ const productData = {
 
 let selectedColor = productData.defaultColor;
 let selectedSize = null;
-let mainImage = productData.variants[selectedColor].images[0];
 
 const card = document.querySelector('.product-card');
 const mainImgEl = card.querySelector('.main-image img');
-const galleries = card.querySelectorAll('.product-gallery');
 const titleEl = card.querySelector('.product-title');
 const priceEl = card.querySelector('.product-price');
 const descriptionEl = card.querySelector('.product-description');
 const colorsButtons = card.querySelectorAll('.color-button');
 const sizesButtons = card.querySelectorAll('.size-options button');
-const addToCartBtn = card.querySelector('.add-to-cart');
 
 function init (){
   titleEl.textContent = productData.title;
@@ -106,6 +114,41 @@ function init (){
   loadGallery(selectedColor);
   renderColorOptionsImgs();
   updatePrice(selectedColor);
+}
+
+function loadGallery (color) {
+  const galleryEl = card.querySelector('.product-gallery');
+  galleryEl.innerHTML = '';
+
+    productData.variants[color].images.forEach((imgURL, id) => {
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('image-container');
+      const imgEl = document.createElement('img');
+      imgEl.dataset.src = imgURL;
+      imgEl.src = imgURL;
+      imgEl.width = 88;
+      if (id === 0) imgContainer.classList.add("active");
+      imgContainer.appendChild(imgEl);
+      galleryEl.appendChild(imgContainer);
+    });
+
+    galleryEl.addEventListener('click', (e) =>{
+      if (e.target.tagName === 'IMG'){
+        mainImgEl.src = e.target.dataset.src;
+        galleryEl.querySelectorAll('.image-container').forEach(image => image.classList.remove('active'));
+        e.target.closest('.image-container').classList.add('active');
+      }
+    })
+
+
+  const firstImg = galleryEl.querySelector("img");
+  if (firstImg) {
+    mainImgEl.src = firstImg.dataset.src;
+    mainImgEl.alt = `${productData.title} - ${color}`;
+  }
+  //
+  // galleryEl.querySelectorAll("img").forEach(img => img.classList.remove("active"));
+  // firstImg.classList.add("active");
 }
 
 function updatePrice (color) {
@@ -123,49 +166,9 @@ function renderColorOptionsImgs () {
   })
 }
 
-function loadGallery (color) {
-  const galleryEl = card.querySelector(`.product-gallery[data-color="${color}"]`)
-  console.log(galleryEl)
-
-  if(galleryEl.childElementCount === 0){
-    productData.variants[color].images.forEach((imgURL, id) => {
-      const imgContainer = document.createElement('div');
-      imgContainer.classList.add('image-container');
-      const imgEl = document.createElement('img');
-      imgEl.dataset.src = imgURL;
-      imgEl.src = imgURL;
-      if (id === 0) imgContainer.classList.add("active");
-      imgContainer.appendChild(imgEl);
-      galleryEl.appendChild(imgContainer);
-    });
-
-    galleryEl.addEventListener('click', (e) =>{
-      if (e.target.tagName === 'IMG'){
-        mainImgEl.src = e.target.dataset.src;
-        galleryEl.querySelectorAll('.image-container').forEach(image => image.classList.remove('active'));
-        e.target.closest('.image-container').classList.add('active');
-      }
-    })
-  }
-
-  const firstImg = galleryEl.querySelector("img");
-  if (firstImg) {
-    mainImgEl.src = firstImg.dataset.src;
-    mainImgEl.alt = `${productData.title} - ${color}`;
-  }
-
-  galleryEl.querySelectorAll("img").forEach(img => img.classList.remove("active"));
-  firstImg.classList.add("active");
-}
-
 colorsButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     selectedColor = btn.dataset.color;
-    console.log(selectedColor);
-
-    galleries.forEach(gallery => gallery.classList.add('hidden'));
-    const currentGallery = card.querySelector(`.product-gallery[data-color="${selectedColor}"]`);
-    currentGallery.classList.remove('hidden');
 
     loadGallery(selectedColor);
     updatePrice(selectedColor);
@@ -187,88 +190,9 @@ sizesButtons.forEach(btn => {
 })
 
 
-// function renderProductCard () {
-//   const variant = productData.variants[selectedColor];
-//   console.log(variant)
-//   const {title, description, id} = productData;
-//   titleEl.textContent = title;
-//   priceEl.textContent = `$ ${variant.price}`;
-//   descriptionEl.textContent = description;
-//
-//   mainImgEl.src = mainImage;
-//   mainImgEl.alt = `${title} - ${selectedColor}`;
-//
-//   galleryEl.innerHTML = '';
-//   variant.images.forEach(image => {
-//     const imgEl = document.createElement('img');
-//     imgEl.src = image;
-//     imgEl.alt = `${title} - ${selectedColor}`;
-//     imgEl.classList.add('gallery-img');
-//     if (image === mainImage) imgEl.classList.add('active');
-//     imgEl.addEventListener('click', () => {
-//       mainImage.src = image;
-//       renderProductCard();
-//     })
-//     galleryEl.appendChild(imgEl);
-//   })
-//
-//   colorsEl.innerHTML = '';
-//   Object.keys(productData.variants).forEach(color => {
-//     const btn = document.createElement('button');
-//     btn.textContent = color;
-//     btn.classList.add('color-btn')
-//     if (color === mainImage) btn.classList.add('active');
-//     btn.addEventListener('click', () => {
-//       selectedColor = color;
-//       mainImage = productData.variants[color].images[0];
-//       selectedSize = null;
-//       renderProductCard();
-//     })
-//     colorsEl.appendChild(btn);
-//   })
-//
-//   sizesEl.innerHTML = ''
-//   variant.sizes.forEach(size => {
-//     const btn = document.createElement('button');
-//     btn.textContent = size;
-//     btn.classList.add('size-btn')
-//     if (size === selectedSize) btn.classList.add('active');
-//     btn.addEventListener("click", () => {
-//       selectedSize = size;
-//       renderProductCard();
-//     });
-//     sizesEl.appendChild(btn);
-//   })
-//
-//
-//
-// }
-const contactForm = document.querySelector('.contact-form');
-
-contactForm.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  alert('Thank You!');
-  contactForm.reset();
-})
-
-let prevScroll = 0;
-const header = document.querySelector('header');
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
-  if (currentScroll <= 0){
-    header.classList.remove('hidden');
-  } else if(currentScroll > prevScroll){
-    header.classList.add('hidden');
-  } else {
-    header.classList.remove('hidden');
-  }
-
-  prevScroll=currentScroll;
-})
 
 const currentYear = new Date().getFullYear();
-document.getElementById('copyrightYear').innerText = currentYear;
+document.getElementById('copyrightYear').innerText = currentYear.toString();
 
 
 function toggleItem(item, triggerSelector, contentSelector, toggleClass = 'open') {
@@ -290,9 +214,10 @@ function toggleItem(item, triggerSelector, contentSelector, toggleClass = 'open'
 }
 
 //toggle Mobile Navigation
-
 const navigation = document.querySelector('header .nav');
-toggleItem(navigation, '.nav-toggler', '.nav-list', 'show');
+navigation.querySelector('.nav-toggler').addEventListener('click', () => {
+  toggleItem(navigation, '.nav-toggler', '.nav-list', 'show');
+})
 
 document.querySelectorAll('.question-item').forEach(item => {
   const trigger = item.querySelector('.question-title');
@@ -321,8 +246,14 @@ document.querySelectorAll('.footer-menu').forEach(menu => {
   trigger.addEventListener('click', ()=>{
     toggleItem(menu, '.footer-nav-title', '.footer-nav-list');
   })
-
 })
 
-// renderProductCard();
+const contactForm = document.querySelector('.contact-form');
+
+contactForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  alert('Thank You!');
+  contactForm.reset();
+})
+
 init();
