@@ -1,4 +1,4 @@
-#Shopify School E-commerce Demo
+# Shopify School E-commerce Demo
 
 A responsive front-end prototype with product gallery, hero slider, FAQ section, and contact form. Built with vanilla JavaScript, HTML5, and CSS3.
 
@@ -36,7 +36,7 @@ A responsive front-end prototype with product gallery, hero slider, FAQ section,
 
 ```bash
 git clone https://github.com/ivanna-pt/shopify-school-homepage-ivanna-borysenko.git
-cd nike-demo
+cd shopify-school-homepage-ivanna-borysenko
 ```
 
 2. **Open index.html in your browser**
