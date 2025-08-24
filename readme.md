@@ -1,6 +1,6 @@
 # Shopify School E-commerce Demo
 
-A responsive front-end prototype with product gallery, hero slider, FAQ section, and contact form. Built with vanilla JavaScript, HTML5, and CSS3.
+A responsive front-end prototype with product card, collection gallery, hero slider, FAQ section, and contact form. Built with vanilla JavaScript, HTML5, and CSS3.
 
 ---
 ## 🚀 Demo
