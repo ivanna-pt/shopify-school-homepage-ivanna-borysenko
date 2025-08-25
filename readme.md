@@ -4,7 +4,7 @@ A responsive front-end prototype with product card, collection gallery, hero sli
 
 ---
 ## 🚀 Demo
-[Live Demo on Netlify]()
+[Live Demo on GitHub Pages](https://ivanna-pt.github.io/shopify-school-homepage-ivanna-borysenko/)
 
 
 ---
@@ -40,4 +40,4 @@ cd shopify-school-homepage-ivanna-borysenko
 ```
 
 2. **Open index.html in your browser**
-3. **View on Netlify**
+3.[ **View on GitHub Pages**](https://ivanna-pt.github.io/shopify-school-homepage-ivanna-borysenko/)
