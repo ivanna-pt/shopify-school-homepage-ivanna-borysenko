@@ -53,6 +53,7 @@ a{
 }
 button{
     cursor: pointer;
+    color: inherit;
     background-color: transparent;
     border: 1px solid transparent;
     padding: 0;
